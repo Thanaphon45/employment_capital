@@ -18,10 +18,10 @@ function RegisterPage() {
     e.preventDefault();
 
     if (password != confirmPassword) {
-      setError("Password do not match!");
+      setError("รหัสผ่านไม่ตรงกัน!");
       return;
     } else if (!username || !password || !confirmPassword) {
-      setError("Please complete all  inputs!");
+      setError("กรุณากรอกข้อมูลให้ครบถ้วน!");
       return;
     } else {
       try {
@@ -39,10 +39,10 @@ function RegisterPage() {
         if (res.ok) {
           const form = e.target;
           setError("");
-          setSuccess("User registration successfully!");
+          setSuccess("ลงทะเบียนผู้ใช้สำเร็จ!");
           form.reset();
         } else {
-          console.log("User registration failed");
+          console.log("การลงทะเบียนผู้ใช้ล้มเหลว");
         }
       } catch (error) {
         console.log("error", error);
@@ -57,23 +57,23 @@ function RegisterPage() {
         <form onSubmit={handleSubmit}>
           {error && <div>{error}</div>}
           {success && <div>{success}</div>}
-          <h3>Resgister Page</h3>
+          <h3>สมัครสมาชิก</h3>
           <input
             onChange={(e) => setUsername(e.target.value)}
             type="email"
-            placeholder="Enter your email"
+            placeholder="กรอกอีเมล์ของคุณ"
           />
           <input
             onChange={(e) => setPassword(e.target.value)}
             type="password"
-            placeholder="Enter your password"
+            placeholder="กรอกรหัสผ่านของคุณ"
           />
           <input
             onChange={(e) => setConfirmPassword(e.target.value)}
             type="password"
-            placeholder="Confirm your password"
+            placeholder="ยืนยันรหัสผ่านของคุณ"
           />
-          <button type="submit">Sign Up</button>
+          <button type="submit">สมัครสมาชิก</button>
         </form>
       </div>
     </div>

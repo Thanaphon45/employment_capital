@@ -40,7 +40,7 @@ function LoginPage() {
       
 
       if(res.error){
-        setError("Invalid credentials");
+        setError("ข้อมูลไม่ถูกต้อง! กรุณากรออกข้อมูลใหม่อีกครั้ง");
         return;
       }
 
@@ -74,14 +74,14 @@ function LoginPage() {
             <form onSubmit={handlerSubmit}>
 
             {error && (<div>{error}</div>)}
-
-                <h3>Login Page</h3>
-                <input onChange={(e) => setUsername(e.target.value)} type="email" placeholder='Enter your username' />
-                <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder='Enter your password' />
-                <button type='submit'>Sign Up</button>
+            <div className="แถบสี"></div> 
+                <h3>หน้าเข้าสู่ระบบ</h3>
+                <input onChange={(e) => setUsername(e.target.value)} type="email" placeholder='กรอกอีเมลของคุณ' />
+                <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder='กรอกรหัสผ่านของคุณ' />
+                <button type='submit'>เข้าสู่ระบบ</button>
             </form>
             <hr />
-            <p>Already have an account? go to <Link href="/register">Register</Link>Page</p>
+            <p>ยังไม่มีบัญชีใช่ไหม? <Link href="/register">สมัครสมาชิก!!</Link></p>
         </div>
     </div>
   )

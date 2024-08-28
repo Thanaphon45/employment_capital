@@ -28,10 +28,11 @@ function WelcomePage() {
     <div>
         <Navber session = {session}/>
         <div>
-            <h3>Welcome</h3>
+            <h3>หน้าหลัก</h3>
             <p>Welcome, {session.user.name}!</p>
             <p>Role: {session.user.role}</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum corporis iure suscipit quia mollitia accusantium maiores, consequuntur placeat odio autem quasi illo libero perspiciatis molestias porro quibusdam in quae neque?</p>
+            <p>บริการด้านทุนจ้างงานนิสิต มหาวิทยาลัยทักษิณ</p>
+            
         </div>
         </div>
   )

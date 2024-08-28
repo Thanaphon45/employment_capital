@@ -1,44 +1,37 @@
-"use client"
-import React from 'react';
-import Link from 'next/link';
-import { signOut } from 'next-auth/react';
-
+import React from 'react'
+import Link from 'next/link'
+import { signOut } from 'next-auth/react'
+import Image from 'next/image'
 function Navber({ session }) {
-  return (
-    <nav className="bg-blue-600 shadow-lg">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <div className="text-white font-bold text-xl">
-          <Link href="/">NextAuth</Link>
-        </div>
-        <ul className="flex space-x-4">
-          {!session ? (
-            <>
-              <li>
-                <Link href="/login" className="text-white hover:text-gray-200 transition duration-300">Login</Link>
-              </li>
-              <li>
-                <Link href="/register" className="text-white hover:text-gray-200 transition duration-300">Register</Link>
-              </li>
-            </>
-          ) : (
-            <>
-              <li>
-                <Link href="/welcome" className="text-white hover:text-gray-200 transition duration-300">Profile</Link>
-              </li>
-              <li>
-                <button
-                  onClick={() => signOut()}
-                  className="text-white hover:text-gray-200 transition duration-300 focus:outline-none"
-                >
-                  Log Out
-                </button>
-              </li>
-            </>
-          )}
-        </ul>
-      </div>
-    </nav>
-  );
+    return (
+        <nav>
+
+            <div className="container mx-auto">
+                <Link href="/home_admin">Home page</Link>
+                <Link href="/edit_admin">เพิ่ม-แก้ไขข้อมูล</Link>
+                <Link href="/matching_admin">ดูผลการจับคู่</Link>
+                <Link href="/report_admin">ออกรายงาน</Link>
+            </div>
+            <div className="logothaksin">
+                <Image src="/thaksin.png" width={80} height={80} alt="logothaksin" />
+            </div>
+            <div className="header">
+                <div className="logo">
+                    <Image src="/tsu.png" width={200} height={200} alt="logo" />
+                </div>
+            </div>
+            <ul>
+                {!session ? (
+                    <Link href="/login">เข้าสู่ระบบ</Link>
+                ) : (
+                    <>
+                        <a href='/welcome'>โปรไฟล์</a>
+                        <a onClick={() => signOut()}>LogOut</a>
+                    </>
+                )}
+            </ul>
+        </nav>
+    )
 }
 
-export default Navber;
+export default Navber
