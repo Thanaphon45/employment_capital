@@ -55,6 +55,7 @@ function ScholarshipsForm() {
   return (
     <div>
       <Navber />
+      <div className="แถบสี"></div> 
       <div className="max-w-lg mx-auto p-6 mt-10 bg-white rounded-lg shadow-lg">
         <form onSubmit={handleSubmit} className="space-y-4">
           <h3 className="text-2xl font-semibold text-gray-800 mb-4">Register Scholarship</h3>

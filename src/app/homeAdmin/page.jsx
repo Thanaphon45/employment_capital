@@ -37,11 +37,10 @@ function ProfilePage() {
             </div>
       <h1 className="หน้าแรกแอดมิน">บริการด้านทุนจ้างงานนิสิต มหาวิทยาลัยทักษิณ</h1>
             <br />
-            <p>Welcome, {session.user.name}!</p>
-            <p>Role: {session.user.role}</p>
-            <a href='/scholarships'>เพิ่มแก้ไขทุน</a>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum corporis iure suscipit quia mollitia accusantium maiores, consequuntur placeat odio autem quasi illo libero perspiciatis molestias porro quibusdam in quae neque?</p>
+            <p className="text-2xl font-bold mb-6 text-center">ยินดีตอนรับเข้าสู่ บริการด้านทุนจ้างงานนิสิต มหาวิทยาลัยทักษิณ <br></br> {session.user.name}!</p>
+            <a href='/scholarships' className="bg-blue-500 text-white px-3 py-2 rounded-lg no-underline mb-4 block text-center hover:bg-blue-600">เพิ่มทุน</a>
         </div>
+        <p>Role: {session.user.role}</p>
         <Foter/>
         </div>
   )

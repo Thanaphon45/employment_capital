@@ -7,7 +7,7 @@ function Navber({ session }) {
         <nav>
 
             <div className="container mx-auto">
-                <Link href="/home_admin">Home page</Link>
+                <Link href="/scholarships">Home page</Link>
                 <Link href="/edit_admin">เพิ่ม-แก้ไขข้อมูล</Link>
                 <Link href="/matching_admin">ดูผลการจับคู่</Link>
                 <Link href="/report_admin">ออกรายงาน</Link>
