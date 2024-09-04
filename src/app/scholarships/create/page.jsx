@@ -90,7 +90,6 @@ function ScholarshipsForm() {
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
-
           <div>
             <h3>วันที่สิ้นสุด</h3>
             <input
@@ -99,13 +98,12 @@ function ScholarshipsForm() {
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
-
           <div>
             <button
               type="submit"
               className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition duration-300"
             >
-              ตกลง
+              ยืนยัน
             </button>
           </div>
         </form>

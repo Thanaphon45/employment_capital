@@ -4,6 +4,7 @@ import Navber from '@/app/components/Navber';
 import Foter from '../components/Foter';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
+
 function ShowScholarships() {
   const [scholarships, setScholarships] = useState([]);
   const [error, setError] = useState("");
