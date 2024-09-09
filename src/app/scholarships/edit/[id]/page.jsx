@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Navber from "@/app/components/Navber";
 import Foter from "@/app/components/Foter";
-import Image from "next/image";
+
 function EditScholarshipsPage({ params }) {
   const { id: scholarship_id } = params;
   const [postData, setPostData] = useState({});
@@ -82,56 +82,69 @@ function EditScholarshipsPage({ params }) {
   };
 
   return (
-  <>
+    <>
       <Navber/>
       <div className="แถบสี"></div> 
-      <br></br><br></br>
-      <div className="relative pys-3 sm:max-w-xl sm:mx-auto">
-      <div className="absolute inset-0 bg-blue-500 text-white px-3 py-1 rounded-lg mr-2 hover:bg-blue-600 transform scale-110"></div>
+      <br /><br />
+      <div className="relative py-3 sm:max-w-xl sm:mx-auto">
+        <div className="absolute inset-0 bg-blue-500 text-white px-3 py-1 rounded-lg mr-2 hover:bg-blue-600 transform scale-110"></div>
         <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
           <h3 className="text-2xl font-bold mb-4 text-center">Edit Scholarships Page</h3>
           {scholarship_id && <div className="text-center mb-4">Editing Scholarship ID: {scholarship_id}</div>}
           <form onSubmit={handleSubmit} className="space-y-4">
-          <h3>ปีการศึกษา</h3>
-            <input
-              onChange={(e) => setNewAcademicYear(e.target.value)}
-              type="number"
-              placeholder={"ปีการศึกษา"}
-              value={newacademic_year}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-            />
-            <h3>เทอมการศึกษา</h3>
-            <input
-              onChange={(e) => setNewAcademicTerm(e.target.value)}
-              type="number"
-              placeholder={"เทอมการศึกษา"}
-              value={newacademic_term}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-            />
-            <h3>วันที่เริ่มต้น</h3>
-            <input
-              onChange={(e) => setNewApplicationStartDate(e.target.value)}
-              type="date"
-              placeholder={"Start Date"}
-              value={newapplication_start_date}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-            />
-            <h3>วันที่สิ้นสุด</h3>
-            <input
-              onChange={(e) => setNewApplicationEndDate(e.target.value)}
-              type="date"
-              placeholder={"End Date"}
-              value={newapplication_end_date}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-            />
-            <button type="submit" className="w-full py-2 bg-blue-500 text-white font-bold rounded-lg shadow-md hover:bg-blue-600">
-              Submit
-            </button>
+            <div>
+              <h3 className="text-gray-700">ปีการศึกษา</h3>
+              <input
+                onChange={(e) => setNewAcademicYear(e.target.value)}
+                type="number"
+                placeholder="ปีการศึกษา"
+                value={newacademic_year}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              />
+            </div>
+            <div>
+              <h3 className="text-gray-700">เทอมการศึกษา</h3>
+              <input
+                onChange={(e) => setNewAcademicTerm(e.target.value)}
+                type="number"
+                placeholder="เทอมการศึกษา"
+                value={newacademic_term}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              />
+            </div>
+            <div>
+              <h3 className="text-gray-700">วันที่เริ่มต้น</h3>
+              <input
+                onChange={(e) => setNewApplicationStartDate(e.target.value)}
+                type="date"
+                placeholder="Start Date"
+                value={newapplication_start_date}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              />
+            </div>
+            <div>
+              <h3 className="text-gray-700">วันที่สิ้นสุด</h3>
+              <input
+                onChange={(e) => setNewApplicationEndDate(e.target.value)}
+                type="date"
+                placeholder="End Date"
+                value={newapplication_end_date}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              />
+            </div>
+            <div>
+              <button
+                type="submit"
+                className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300"
+              >
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </div>
-      <br></br><br></br><Foter/>
-      </>
+      <br /><br /><Foter/>
+    </>
   );
 }
 

@@ -11,42 +11,17 @@
 .logo {
     margin-right: -30px;  
 }
-.logothaksin {
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
-    margin-right: 550px; 
-}
+
 nav {
     display: flex;
-    justify-content: center; 
-    align-items: center; 
-    height: 80px; 
-    width: 100%; 
-    background: linear-gradient(
-        to right, 
-        #DCF2F1, 
-        #7FC7D9, 
-        #365486, 
-        #0F1035  
-    );
-    margin-top: 60px;
-}
-nav a {
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 18px;
-    padding: 5px;
-    white-space: nowrap;
-    line-height: 60px; 
-}
-nav a:hover{
-    color: #6505ff;
-     
-}
-
-
+    justify-content: space-between;
+    align-items: center;
+    height: 200px;
+    width: 150%;
+    background: linear-gradient(to right, #DCF2F1, #7FC7D9, #365486, #0F1035);
+    margin-top: 100px;
+  }
+  
 footer{ /* ใช้แสดง  Copyright 2024 | Thaksin Univerity ของ foter*/
     display: block;
     background: #dddddd;
@@ -55,19 +30,14 @@ footer{ /* ใช้แสดง  Copyright 2024 | Thaksin Univerity ของ f
     margin-top: 10px;
     color: rgba(0, 0, 0, 0.467);
     border-top: 1px solid #dddddd;
+    
 }
 
-.edit{ /* ตัวอย่างแก้ไขข้อมูล */
-    width: 150px;
-    padding: 10px 0;
-    background-color: #4979ff;
-    border-radius: 4px;
-    color: white;
-
-}
 .แถบสี { /* แถบสีแสดงทุกหน้า ต้องใส่ทุกหน้า ยังแก้ไม่ได้ */
     width: auto;
     padding: 5px 0;
+    height: 18px; 
+    width: 100%; 
     background-color: #4979ff;
     color: white; 
 }
@@ -76,7 +46,7 @@ footer{ /* ใช้แสดง  Copyright 2024 | Thaksin Univerity ของ f
     text-align: center;
     font-size: 37px;
     position: absolute;
-    top: 35%; /* ปรับตำแหน่งบน-ล่าง */
+    top: 55%; /* ปรับตำแหน่งบน-ล่าง */
     left: 50%; /* ปรับตำแหน่งซ้าย-ขวา */
     transform: translate(-50%, -50%); /* ทำให้ข้อความอยู่ตรงกลาง */
     z-index: 1; /* ทำให้ข้อความอยู่บนรูปภาพ */
@@ -94,3 +64,28 @@ footer{ /* ใช้แสดง  Copyright 2024 | Thaksin Univerity ของ f
 }
 
 
+/* .logothaksin {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    margin-right: 550px; 
+} */
+
+@keyframes computerLines {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1000px 1000px;
+  }
+}
+
+.bg-grid-pattern {
+  background-image: linear-gradient(90deg, rgba(0,255,0,0.1) 1px, transparent 1px), 
+                    linear-gradient(rgba(0,255,0,0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.animate-computerLines {
+  animation: computerLines 10s linear infinite;
+}

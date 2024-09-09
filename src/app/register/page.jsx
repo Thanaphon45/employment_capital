@@ -58,26 +58,24 @@ function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#DCF2F1] via-[#7FC7D9] via-[#365486] to-[#0F1035]">
       <Navber />
-      <div className="flex flex-1 justify-center items-center bg-gray-100 py-12">
+      <div className="flex flex-1 justify-center items-center py-12 bg-opacity-60">
         <form
           onSubmit={handleSubmit}
-          className="bg-white p-8 rounded-lg shadow-md w-full max-w-md"
+          className="bg-white p-10 rounded-3xl shadow-2xl transform transition-all duration-500 hover:scale-105 w-full max-w-md"
         >
           {error && <div className="text-red-500 mb-4 text-center">{error}</div>}
-          {success && (
-            <div className="text-green-500 mb-4 text-center">{success}</div>
-          )}
-          <h3 className="text-2xl font-semibold mb-6 text-center">
+          {success && <div className="text-green-500 mb-4 text-center">{success}</div>}
+          <h3 className="text-4xl font-extrabold mb-6 text-center text-gray-800">
             สมัครสมาชิก
           </h3>
           <div className="mb-4">
             <input
               onChange={(e) => setUsername(e.target.value)}
               type="email"
-              placeholder="กรอกอีเมล์ของคุณ"
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="กรอกอีเมลของคุณ"
+              className="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:border-[#365486] focus:ring-2 focus:ring-[#7FC7D9] transition duration-300"
             />
           </div>
           <div className="mb-4">
@@ -85,7 +83,7 @@ function RegisterPage() {
               onChange={(e) => setPassword(e.target.value)}
               type="password"
               placeholder="กรอกรหัสผ่านของคุณ"
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:border-[#365486] focus:ring-2 focus:ring-[#7FC7D9] transition duration-300"
             />
           </div>
           <div className="mb-6">
@@ -93,12 +91,12 @@ function RegisterPage() {
               onChange={(e) => setConfirmPassword(e.target.value)}
               type="password"
               placeholder="ยืนยันรหัสผ่านของคุณ"
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:border-[#365486] focus:ring-2 focus:ring-[#7FC7D9] transition duration-300"
             />
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors"
+            className="w-full py-3 bg-gradient-to-r from-[#365486] to-[#0F1035] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-[#7FC7D9]"
           >
             สมัครสมาชิก
           </button>
@@ -107,6 +105,6 @@ function RegisterPage() {
       <Foter />
     </div>
   );
-}
+};
 
 export default RegisterPage;
