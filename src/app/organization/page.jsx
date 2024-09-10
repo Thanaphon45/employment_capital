@@ -22,10 +22,10 @@ function Showorganization() {
       
         const fetchOrganization = async () => {
             try {
-                // ดึงข้อมูล organization
-                const resOrganization = await fetch("/api/organization", {
-                    method: "GET",
-                });
+                const resOrganization = await fetch("/api/organization", { method: "GET" });
+                if (!resOrganization.ok) {
+                    throw new Error("Failed to fetch organization data");
+                }
                 const orgData = await resOrganization.json();
                 console.log("Fetched Organization Data:", orgData);
 
@@ -36,31 +36,25 @@ function Showorganization() {
                 const scholarshipData = await resScholarship.json();
                 console.log("Fetched Scholarship Data:", scholarshipData);
 
-                if (resOrganization.ok && resScholarship.ok) {
-                    // รวมข้อมูลจากทั้งสอง API เข้าด้วยกัน โดย match ตาม organization_id
-                    const mergedData = orgData.map((org) => {
-                        const scholarship = scholarshipData.find(
-                            (scholarship) =>
-                                scholarship.organization_id === org.organization_id
-                        );
+                // รวมข้อมูลจากทั้งสอง API เข้าด้วยกัน โดย match ตาม organization_id
+                const mergedData = orgData.map((org) => {
+                    const scholarship = scholarshipData.find(
+                        (scholarship) =>
+                            scholarship.organization_id === org.organization_id
+                    );
 
-                        console.log("Matching Scholarship Data for Org ID", org.organization_id, ":", scholarship);
+                    return {
+                        organization_id: org.organization_id,
+                        organization_name: org.organization_name,
+                        contactPhone: org.contactPhone,
+                        contactEmail: org.contactEmail,
+                        amount: scholarship ? scholarship.amount : "N/A", // แสดง "N/A" ถ้าไม่มีข้อมูล
+                        required_parttime: scholarship ? scholarship.required_parttime : "N/A", // แสดง "N/A" ถ้าไม่มีข้อมูล
+                    };
+                });
 
-                        return {
-                            organization_id: org.organization_id,
-                            organization_name: org.organization_name,
-                            contactPhone: org.contactPhone,
-                            contactEmail: org.contactEmail,
-                            amount: scholarship?.amount || "N/A", // แสดง "N/A" ถ้าไม่มีข้อมูล
-                            required_parttime: scholarship?.required_parttime || "N/A", // แสดง "N/A" ถ้าไม่มีข้อมูล
-                        };
-                    });
-
-                    console.log("Merged Data:", mergedData);
-                    setOrganization(mergedData);
-                } else {
-                    setError("Failed to fetch organization data");
-                }
+                console.log("Merged Data:", mergedData);
+                setOrganization(mergedData);
             } catch (error) {
                 console.error("Error fetching organization data:", error);
                 setError("An error occurred while fetching organization data");
@@ -69,7 +63,7 @@ function Showorganization() {
       
         fetchOrganization();
     }, [status, session, router]);
-      
+
     // ฟังก์ชันลบข้อมูล organization
     const handleDelete = async (organization_id) => {
         const confirmed = confirm("ต้องการลบหน่วยงานนี้ใช่หรือไม่?");
@@ -77,21 +71,13 @@ function Showorganization() {
             try {
                 // ลบข้อมูลจาก organization
                 const resOrganization = await fetch(
-                    `/api/organization?organization_id=${organization_id}`,
+                    `http://localhost:3000/api/organization${organization_id ? `/${organization_id}` : ""}`,
                     {
                         method: "DELETE",
                     }
                 );
 
-                // ลบข้อมูลจาก scholarshiporganization
-                const resScholarship = await fetch(
-                    `/api/scholarshiporganization?organization_id=${organization_id}`, // ใช้ organization_id
-                    {
-                        method: "DELETE",
-                    }
-                );
-
-                if (resOrganization.ok && resScholarship.ok) {
+                if (resOrganization.ok) {
                     setOrganization((prev) =>
                         prev.filter((org) => org.organization_id !== organization_id)
                     );

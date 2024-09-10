@@ -20,14 +20,17 @@ class ScholarshipOrganization {
 
 
   // เมธอดสำหรับสร้างข้อมูลใหม่ในตาราง scholarshiporganization
-  static async create(organizationData) {
-    const { scholarship_organ_id, scholarship_id, organization_id, amount, required_parttime } = organizationData;
-    const [result] = await promisePool.query(
-      'INSERT INTO scholarshiporganization (scholarship_organ_id, scholarship_id, organization_id, amount, required_parttime) VALUES (?, ?, ?, ?, ?)',
-      [scholarship_organ_id, scholarship_id, organization_id, amount, required_parttime]
-    );
-    return result;
-  }
+    static async create(organizationData) {
+      const { scholarship_id, organization_id, amount, required_parttime } = organizationData;
+      const [result] = await promisePool.query(
+        'INSERT INTO scholarshiporganization (scholarship_id, organization_id, amount, required_parttime) VALUES (?, ?, ?, ?)',
+        [scholarship_id, organization_id, amount, required_parttime]
+      );
+      return result;
+    }
+
+  
+
 
   // เมธอดสำหรับค้นหาข้อมูลในตาราง scholarshiporganization โดยใช้ scholarship_organ_id
   static async findById(scholarship_organ_id) {
@@ -46,14 +49,23 @@ class ScholarshipOrganization {
   }
 
   // เมธอดสำหรับลบข้อมูลในตาราง scholarshiporganization โดยใช้ scholarship_organ_id
-  static async delete(scholarship_organ_id) {
-    const [result] = await promisePool.query(
-      'DELETE FROM scholarshiporganization WHERE scholarship_organ_id = ?',
-      [scholarship_organ_id]
-    );
-    return result;
+  
+    // ลบข้อมูล scholarship organization ตาม organization_id
+    static async deleteByOrganizationId(organization_id) {
+      try {
+        const [result] = await promisePool.query(
+          'DELETE FROM scholarshiporganization WHERE organization_id = ?',
+          [organization_id]
+        );
+        if (result.affectedRows === 0) {
+          throw new Error("No rows deleted, organization_id might not exist.");
+        }
+        return result;
+      } catch (error) {
+        console.error("Error deleting scholarship organization:", error);
+        throw new Error("Could not delete scholarship organization.");
+      }
+    }
   }
-}
-
 
 export default ScholarshipOrganization;

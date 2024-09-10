@@ -4,9 +4,9 @@ import scholarshiporganization from "../../../../models/scholarshiporganization"
 // POST: Create a new scholarship organization
 export async function POST(req) {
   try {
-    const scholarshiporganizationData = await req.json(); // Get the scholarship organization data from the request
+    const scholarshiporganizationData = await req.json(); // รับข้อมูลจากคำขอ
 
-    await scholarshiporganization.create(scholarshiporganizationData); // Use the create method from the scholarshiporganization model
+    await ScholarshipOrganization.create(scholarshiporganizationData); // เรียกใช้ฟังก์ชัน create จาก model
 
     return NextResponse.json(
       { message: "Scholarshiporganization created successfully." },
@@ -21,11 +21,12 @@ export async function POST(req) {
   }
 }
 
+
 // PUT: Update a scholarship organization
 export async function PUT(req) {
   try {
     const url = new URL(req.url);
-    const scholarship_organ_id = url.searchParams.get("scholarship_organ_id"); // ดึง scholarship_organ_id จาก URL query parameter
+    const scholarship_organ_id = url.searchParams.get("scholarship_organ_id");
 
     if (!scholarship_organ_id) {
       return NextResponse.json(
@@ -34,9 +35,8 @@ export async function PUT(req) {
       );
     }
 
-    const { scholarship_id, organization_id, amount, required_parttime } = await req.json(); // Get the scholarship organization data from the request
+    const { scholarship_id, organization_id, amount, required_parttime } = await req.json();
 
-    // Use the update method from the scholarshiporganization model
     await scholarshiporganization.update(scholarship_organ_id, {
       scholarship_id,
       organization_id,
@@ -56,6 +56,7 @@ export async function PUT(req) {
     );
   }
 }
+
 
 // DELETE: Delete a scholarship organization
 export async function DELETE(req) {
